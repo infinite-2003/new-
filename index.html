@@ -286,6 +286,12 @@
     position: relative;
     overflow: hidden;
   }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .photo-frame .monogram {
     font-family: "Fraunces", Georgia, serif;
     font-size: 4rem;
@@ -435,9 +441,10 @@
 <section class="photo-section">
   <h3>The most beautiful person in the world</h3>
   <div class="photo-frame">
-    <span class="monogram">K</span>
+    <img src="photo.jpg" alt="Kirti" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <span class="monogram" style="display:none; width:100%; height:100%; align-items:center; justify-content:center;">K</span>
   </div>
-  <p class="photo-caption">You are absolutely stunning — send me a photo and I'll put it right here.</p>
+  <p class="photo-caption">You are absolutely stunning 💕</p>
 </section>
 
 <div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
