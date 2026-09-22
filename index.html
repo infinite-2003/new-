@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Kirti 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --bg: #FBEEE7;
+    --bg-soft: #F5E1D6;
+    --panel: #FFF9F4;
+    --ink: #4A2B2E;
+    --ink-soft: #7A5257;
+    --headline: #7A1F3A;
+    --accent: #9C3D54;
+    --gold: #C08A2E;
+    --hairline: rgba(122, 31, 58, 0.18);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #241318;
+      --bg-soft: #2E181F;
+      --panel: #2C171D;
+      --ink: #F1DED9;
+      --ink-soft: #CBA8AC;
+      --headline: #F3C6D2;
+      --accent: #F0A6B8;
+      --gold: #E3B65B;
+      --hairline: rgba(243, 198, 210, 0.18);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #241318;
+    --bg-soft: #2E181F;
+    --panel: #2C171D;
+    --ink: #F1DED9;
+    --ink-soft: #CBA8AC;
+    --headline: #F3C6D2;
+    --accent: #F0A6B8;
+    --gold: #E3B65B;
+    --hairline: rgba(243, 198, 210, 0.18);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Work Sans", system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, .display {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    color: var(--headline);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  section {
+    padding: 6rem 1.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    min-height: 100svh;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.6rem;
+    padding: calc(2rem + env(safe-area-inset-top, 0px)) 1.5rem calc(2rem + env(safe-area-inset-bottom, 0px));
+    position: relative;
+  }
+
+  .eyebrow {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-family: "Fraunces", Georgia, serif;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 8vw, 4.6rem);
+    line-height: 1.05;
+  }
+
+  .hero .sub {
+    max-width: 34ch;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  /* candle */
+  .candle-wrap {
+    margin-top: 0.5rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .candle-wrap:focus-visible svg { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 8px; }
+
+  .flame {
+    transform-origin: 50% 100%;
+    animation: flicker 2.4s ease-in-out infinite;
+  }
+  @keyframes flicker {
+    0%, 100% { transform: scaleY(1) scaleX(1) rotate(0deg); }
+    25% { transform: scaleY(1.06) scaleX(0.96) rotate(-2deg); }
+    50% { transform: scaleY(0.95) scaleX(1.04) rotate(1deg); }
+    75% { transform: scaleY(1.04) scaleX(0.98) rotate(-1deg); }
+  }
+  .flame.out {
+    animation: none;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+  }
+  .smoke {
+    opacity: 0;
+    transform: translateY(0) scaleX(1);
+  }
+  .smoke.show {
+    animation: smoke-rise 1.6s ease-out forwards;
+  }
+  @keyframes smoke-rise {
+    0% { opacity: 0.55; transform: translateY(0) scaleX(1); }
+    100% { opacity: 0; transform: translateY(-34px) scaleX(1.6); }
+  }
+
+  .candle-hint {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    transition: opacity 0.4s ease;
+  }
+  .candle-hint.hidden { opacity: 0; }
+
+  .wish {
+    max-width: 40ch;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--accent);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .wish.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .scroll-cue svg { animation: bob 1.8s ease-in-out infinite; }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* divider */
+  .divider {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 1.5rem;
+  }
+  .divider .line { flex: 1; height: 1px; background: var(--hairline); }
+  .divider .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+
+  /* timeline section */
+  .since-label {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+  .counter {
+    font-size: clamp(2.2rem, 7vw, 3.4rem);
+    line-height: 1.1;
+  }
+  .counter-days {
+    margin-top: 0.75rem;
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+  .counter-days strong { color: var(--ink); font-weight: 600; }
+
+  /* letter section */
+  .letter h2 {
+    font-size: clamp(1.7rem, 5vw, 2.2rem);
+    margin-bottom: 1.6rem;
+  }
+  .letter p {
+    line-height: 1.75;
+    font-size: 1.05rem;
+    margin: 0 0 1.2rem;
+    max-width: 58ch;
+  }
+  .letter p:last-child { margin-bottom: 0; }
+
+  /* closing */
+  .closing {
+    text-align: center;
+    padding-bottom: calc(6rem + env(safe-area-inset-bottom, 0px));
+  }
+  .closing .display {
+    font-size: clamp(1.6rem, 5vw, 2.1rem);
+    font-style: italic;
+  }
+  .closing .sign {
+    margin-top: 1.2rem;
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+
+  .heart-doodle { margin: 0 auto 1.5rem; display: block; }
+
+  /* floating hearts, background layer */
+  .float-hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .float-hearts span {
+    position: absolute;
+    bottom: -10%;
+    font-size: 1.2rem;
+    color: var(--accent);
+    opacity: 0.16;
+    animation: rise linear infinite;
+  }
+  @keyframes rise {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.16; }
+    90% { opacity: 0.16; }
+    100% { transform: translateY(-110vh) rotate(12deg); opacity: 0; }
+  }
+
+  section, .hero { position: relative; z-index: 1; }
+
+  /* photo section */
+  .photo-frame {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: linear-gradient(160deg, var(--bg-soft), var(--panel));
+    border: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-frame .monogram {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: 0.55;
+  }
+  .photo-caption {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    font-style: italic;
+    font-family: "Fraunces", Georgia, serif;
+  }
+  .photo-section { text-align: center; }
+  .photo-section h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.3rem;
+    color: var(--headline);
+    margin-bottom: 1.4rem;
+    font-weight: 600;
+  }
+
+  /* story / wishes lists */
+  .story-section h3, .wishes-section h3, .romantic-title {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.3rem;
+    color: var(--headline);
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+  .story-section p { line-height: 1.75; font-size: 1.05rem; margin: 0 0 1.15rem; }
+  .story-section p:last-child { margin-bottom: 0; }
+
+  .wishes-list {
+    list-style: none;
+    margin: 1.2rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .wishes-list li {
+    position: relative;
+    padding-left: 1.3rem;
+    line-height: 1.6;
+  }
+  .wishes-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .romantic-section { text-align: left; }
+  .romantic-message { line-height: 1.75; font-size: 1.05rem; }
+  .signature {
+    margin-top: 1.6rem;
+    font-family: "Fraunces", Georgia, serif;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+  .signature-name { font-weight: 600; font-style: normal; }
+
+  /* love burst */
+  .love-button {
+    font-family: "Work Sans", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.85rem 1.8rem;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .love-button:hover, .love-button:focus-visible {
+    background: var(--accent);
+    color: var(--panel);
+  }
+  .burst-heart {
+    position: fixed;
+    bottom: -5%;
+    font-size: 1.4rem;
+    color: var(--accent);
+    pointer-events: none;
+    z-index: 5;
+    animation: burst-rise 2.2s ease-out forwards;
+  }
+  @keyframes burst-rise {
+    0% { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
+    12% { opacity: 1; }
+    100% { transform: translateY(-90vh) scale(1.1) rotate(20deg); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flame, .scroll-cue svg, .float-hearts span, .burst-heart { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="float-hearts" id="floatHearts" aria-hidden="true"></div>
+
+<section class="hero">
+  <div class="eyebrow">for my favorite person</div>
+  <h1>Happy Birthday,<br>Kirti</h1>
+  <p class="sub">A little late, sweetheart — but my love was never on time to begin with. It's just constant.</p>
+
+  <button class="candle-wrap" id="candleBtn" aria-label="Blow out the candle to make a wish">
+    <svg width="72" height="120" viewBox="0 0 72 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse class="smoke" id="smoke" cx="36" cy="18" rx="6" ry="3" fill="var(--ink-soft)"/>
+      <path class="flame" id="flame" d="M36 8C40 16 44 22 36 34C28 22 32 16 36 8Z" fill="var(--gold)"/>
+      <rect x="30" y="34" width="12" height="52" rx="3" fill="var(--panel)" stroke="var(--hairline)" stroke-width="1.5"/>
+      <rect x="30" y="46" width="12" height="6" fill="var(--accent)" opacity="0.5"/>
+      <rect x="30" y="64" width="12" height="6" fill="var(--accent)" opacity="0.5"/>
+      <path d="M14 110C14 100 22 96 22 96C22 96 30 100 30 110C30 115.5 26.4 120 22 120C17.6 120 14 115.5 14 110Z" fill="var(--accent)" opacity="0.35"/>
+      <path d="M42 110C42 100 50 96 50 96C50 96 58 100 58 110C58 115.5 54.4 120 50 120C45.6 120 42 115.5 42 110Z" fill="var(--accent)" opacity="0.35"/>
+    </svg>
+    <span class="candle-hint" id="candleHint">tap the candle to blow it out</span>
+  </button>
+  <p class="wish" id="wishText">Wish made. I already know one part of it comes true — because you have me, today and every ordinary day after.</p>
+
+  <div class="scroll-cue">
+    <span>keep scrolling</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 5L8 11L14 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </div>
+</section>
+
+<div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+<section class="since">
+  <div class="since-label">since June 2021</div>
+  <div class="counter display" id="counter">counting...</div>
+  <div class="counter-days" id="counterDays"></div>
+</section>
+
+<div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+<section class="photo-section">
+  <h3>The most beautiful person in the world</h3>
+  <div class="photo-frame">
+    <span class="monogram">K</span>
+  </div>
+  <p class="photo-caption">You are absolutely stunning — send me a photo and I'll put it right here.</p>
+</section>
+
+<div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+<section class="letter">
+  <h2>A few things I want you to know</h2>
+  <p>I know this wish is coming a little late, but my love for you was never something with a deadline — it's constant, and it only gets heavier with time. You are, quite simply, the best person I know, and I don't need a calendar date to remind me to celebrate you.</p>
+  <p>It still catches me a little that it's been this long — that a June in 2021 turned into all of this. Different years, different versions of us, and somehow the same answer every time: you.</p>
+  <p>You don't always say when something's sitting heavy on you. You just carry it and keep going, because that's who you are. So today, before the cake and the candles and the plans, I want you to hear this plainly: I'm also there for you. Not just on the easy days — on the ones where you're tired, or unsure, or quietly holding more than you let on. You don't have to carry any of it alone.</p>
+</section>
+
+<div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+<section class="story-section">
+  <h3>Our beautiful beginning</h3>
+  <p>Socha tha tumhe birthday pe bahut acha gift dunga, but tumhare birthday pe milna tha mujhe, isliye socha jab milogi tab dikhaunga. I know tum mujhse kahogi yeh kyun banaya 😂</p>
+  <p>Yeh tab ki baat hai jab main Snapchat chalata tha — shayad May ka month hoga, jab maine add kiya tha tumhe Snapchat pe. Phir apni baatein start hui, uske baad apne relationship mein aaye. Raat ko video call karni — main tumhare saath ka woh time bhool nahi sakta, jo bhi aaj tak maine tumhare saath spend kiya hai.</p>
+  <p>You are always the best for me, my sweetheart — Kirti nahi, <em>Doctor</em> Kirti ❤️</p>
+  <p>Maalum hai yaar, jab bhi tumse baat karta hoon bahut acha lagta hai, aur time ka pata hi nahi chalta ki kab chala gaya, kitne saal ho gaye. I pray bhagwan se ki main hamesha tumhare saath rahoon.</p>
+</section>
+
+<div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+<section class="wishes-section">
+  <h3>My birthday wishes for you</h3>
+  <p>On this belated birthday celebration, I wish for you:</p>
+  <ul class="wishes-list">
+    <li>Endless happiness and laughter</li>
+    <li>Dreams that come true, and goals you actually get to check off</li>
+    <li>Health and steadiness in everything you do</li>
+    <li>Love that surrounds you without you having to ask for it</li>
+    <li>Adventures that fill your heart with joy</li>
+    <li>Peace and contentment in your soul</li>
+  </ul>
+  <p>But most of all, I wish for you to know how incredibly special you are to me. You're my sunshine on cloudy days, my anchor in stormy seas, and my greatest blessing. Thank you for being you — and thank you for letting me love you.</p>
+</section>
+
+<div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+<section class="romantic-section">
+  <h3 class="romantic-title">With all my love, Kirti</h3>
+  <p class="romantic-message">Even though this wish is belated, my love for you is never delayed. It's constant, it's deep, and it keeps growing. You deserve to be celebrated not just on your birthday, but every ordinary day in between.</p>
+  <p class="signature">Forever yours,<br><span class="signature-name">Your Shivam</span></p>
+  <div style="margin-top: 2rem;">
+    <button class="love-button" id="loveBtn">send some love</button>
+  </div>
+</section>
+
+<div class="divider"><span class="line"></span><span class="dot"></span><span class="line"></span></div>
+
+<section class="closing">
+  <svg class="heart-doodle" width="48" height="40" viewBox="0 0 48 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 36C10 27 3 19 3 11.5C3 5.5 7.8 2 12.8 2C17 2 20.6 4.6 24 9C27.4 4.6 31 2 35.2 2C40.2 2 45 5.5 45 11.5C45 19 38 27 24 36Z" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round"/>
+  </svg>
+  <p class="display">However today unfolds, I hope it's easy, funny, and full of cake. Happy birthday, my sweetheart.</p>
+  <p class="sign">I'm not going anywhere — always yours.</p>
+</section>
+
+<script>
+  (function() {
+    var btn = document.getElementById('candleBtn');
+    var flame = document.getElementById('flame');
+    var smoke = document.getElementById('smoke');
+    var wish = document.getElementById('wishText');
+    var hint = document.getElementById('candleHint');
+    var blown = false;
+
+    btn.addEventListener('click', function() {
+      if (blown) return;
+      blown = true;
+      flame.classList.add('out');
+      smoke.classList.add('show');
+      hint.classList.add('hidden');
+      setTimeout(function() { wish.classList.add('show'); }, 350);
+    });
+
+    try {
+      var start = new Date(2021, 5, 1); // June 1, 2021
+      var now = new Date();
+      var msPerDay = 1000 * 60 * 60 * 24;
+      var totalDays = Math.max(0, Math.floor((now - start) / msPerDay));
+      var years = now.getFullYear() - start.getFullYear() -
+        ((now.getMonth() < start.getMonth() || (now.getMonth() === start.getMonth() && now.getDate() < start.getDate())) ? 1 : 0);
+      var months = now.getMonth() - start.getMonth();
+      if (months < 0) months += 12;
+
+      var counterEl = document.getElementById('counter');
+      var daysEl = document.getElementById('counterDays');
+
+      var yearLabel = years === 1 ? 'year' : 'years';
+      var monthLabel = months === 1 ? 'month' : 'months';
+      var text = years + ' ' + yearLabel;
+      if (months > 0) text += ', ' + months + ' ' + monthLabel;
+      counterEl.textContent = text + ' together';
+      daysEl.innerHTML = 'that\'s about <strong>' + totalDays.toLocaleString() + ' days</strong> of choosing you, again and again.';
+    } catch (e) {
+      document.getElementById('counter').textContent = 'since June 2021';
+    }
+
+    // subtle background floating hearts
+    var floatWrap = document.getElementById('floatHearts');
+    var count = window.innerWidth < 480 ? 8 : 14;
+    for (var i = 0; i < count; i++) {
+      var h = document.createElement('span');
+      h.textContent = '♥';
+      h.style.left = (Math.random() * 100) + '%';
+      h.style.animationDuration = (14 + Math.random() * 10) + 's';
+      h.style.animationDelay = (Math.random() * 14) + 's';
+      h.style.fontSize = (0.9 + Math.random() * 0.9) + 'rem';
+      floatWrap.appendChild(h);
+    }
+
+    // love burst button
+    var loveBtn = document.getElementById('loveBtn');
+    if (loveBtn) {
+      loveBtn.addEventListener('click', function() {
+        for (var j = 0; j < 16; j++) {
+          (function(delay) {
+            setTimeout(function() {
+              var b = document.createElement('span');
+              b.textContent = '♥';
+              b.className = 'burst-heart';
+              b.style.left = (Math.random() * 100) + '%';
+              b.style.color = Math.random() > 0.5 ? 'var(--accent)' : 'var(--gold)';
+              document.body.appendChild(b);
+              setTimeout(function() { b.remove(); }, 2300);
+            }, delay);
+          })(j * 60);
+        }
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
